@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BioScale | Calculadora de Precisão de IMC</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="scale-chassis">
+      
+      
+      <header class="scale-header">
+        <div class="brand-badge">
+          <span class="pulse-indicator"></span>
+          BIOSCALE • LAB
+        </div>
+        <h1 class="scale-title">Índice de Massa Corporal</h1>
+        <p class="scale-subtitle">Métrica biométrica de densidade corporal (OMS)</p>
+      </header>
+
+      
+      <form id="meuFormulario" class="scale-form" novalidate>
+        
+        <div class="input-block">
+          <label for="peso" class="input-label">Massa Corporal</label>
+          <div class="input-container">
+            <input
+              type="number"
+              step="0.1"
+              id="peso"
+              name="peso"
+              placeholder="72.5"
+              required
+            />
+            <span class="unit-badge">kg</span>
+          </div>
+        </div>
+
+        <div class="input-block">
+          <label for="altura" class="input-label">Estatura</label>
+          <div class="input-container">
+            <input
+              type="number"
+              step="0.01"
+              id="altura"
+              name="altura"
+              placeholder="1.78"
+              required
+            />
+            <span class="unit-badge">m</span>
+          </div>
+        </div>
+
+        <button type="submit" id="btn-calcular" class="action-btn">
+          <span>CALCULAR DIAGNÓSTICO</span>
+          <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </form>
+
+      
+      <section class="diagnostic-display" id="display-diagnostico">
+        
+        <div class="display-top">
+          <span class="display-tag">LEITURA BIOMÉTRICA</span>
+          <span class="status-chip" id="status-chip">AGUARDANDO DADOS</span>
+        </div>
+
+        <div class="display-metric">
+          <div class="metric-value" id="imc-numero">--.--</div>
+          <div class="metric-unit">kg/m²</div>
+        </div>
+
+        <p class="metric-diagnosis" id="imc-diagnostico">Preencha seu peso e altura para gerar a análise da escala.</p>
+
+        <!-- Barra Espectral de Zonas da OMS (Visual Gauge) -->
+        <div class="spectrum-wrapper" id="spectrum-wrapper">
+          <div class="spectrum-gauge">
+            <div class="zone zone-under" title="Abaixo do peso (&lt; 18.5)"></div>
+            <div class="zone zone-normal" title="Normal (18.5 - 24.9)"></div>
+            <div class="zone zone-over" title="Sobrepeso (25.0 - 29.9)"></div>
+            <div class="zone zone-obese" title="Obesidade (≥ 30)"></div>
+            
+            <!-- Ponteiro / Marcador de Posição -->
+            <div class="gauge-marker" id="gauge-marker"></div>
+          </div>
+          <div class="spectrum-labels">
+            <span>&lt; 18.5</span>
+            <span>18.5 - 24.9</span>
+            <span>25.0 - 29.9</span>
+            <span>&gt; 30.0</span>
+          </div>
+        </div>
+
+      </section>
+
+      <footer class="scale-footer">
+        Desenvolvido por Lucca • Engenharia Web
+      </footer>
+
+    </main>
+
+    <!-- Conecta o JavaScript -->
+    <script src="script.js"></script>
+  </body>
+</html>
